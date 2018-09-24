@@ -1,0 +1,359 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DAC001332157CB7E001450C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC001322157CB7E001450C6 /* AppDelegate.swift */; };
+		DAC001352157CB7E001450C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC001342157CB7E001450C6 /* ViewController.swift */; };
+		DAC001382157CB7E001450C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC001362157CB7E001450C6 /* Main.storyboard */; };
+		DAC0013A2157CB7F001450C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAC001392157CB7F001450C6 /* Assets.xcassets */; };
+		DAC0013D2157CB7F001450C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC0013B2157CB7F001450C6 /* LaunchScreen.storyboard */; };
+		DAC00146215911C9001450C6 /* HttpProxyHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC00144215911C9001450C6 /* HttpProxyHandler.swift */; };
+		DAC00147215911C9001450C6 /* HttpProxyProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC00145215911C9001450C6 /* HttpProxyProtocol.swift */; };
+		DAC00149215919BB001450C6 /* UIWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC00148215919BB001450C6 /* UIWebViewVC.swift */; };
+		DAC0014B215919D7001450C6 /* WKWebView1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC0014A215919D7001450C6 /* WKWebView1VC.swift */; };
+		DAC0014D21591A08001450C6 /* WKWebView2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC0014C21591A08001450C6 /* WKWebView2VC.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		DAC0012F2157CB7E001450C6 /* HttpProxyDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HttpProxyDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC001322157CB7E001450C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DAC001342157CB7E001450C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DAC001372157CB7E001450C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		DAC001392157CB7F001450C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DAC0013C2157CB7F001450C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		DAC0013E2157CB7F001450C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DAC00144215911C9001450C6 /* HttpProxyHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpProxyHandler.swift; sourceTree = "<group>"; };
+		DAC00145215911C9001450C6 /* HttpProxyProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpProxyProtocol.swift; sourceTree = "<group>"; };
+		DAC00148215919BB001450C6 /* UIWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWebViewVC.swift; sourceTree = "<group>"; };
+		DAC0014A215919D7001450C6 /* WKWebView1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView1VC.swift; sourceTree = "<group>"; };
+		DAC0014C21591A08001450C6 /* WKWebView2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView2VC.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DAC0012C2157CB7E001450C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DAC001262157CB7E001450C6 = {
+			isa = PBXGroup;
+			children = (
+				DAC001312157CB7E001450C6 /* HttpProxyDemo */,
+				DAC001302157CB7E001450C6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DAC001302157CB7E001450C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DAC0012F2157CB7E001450C6 /* HttpProxyDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DAC001312157CB7E001450C6 /* HttpProxyDemo */ = {
+			isa = PBXGroup;
+			children = (
+				DAC001322157CB7E001450C6 /* AppDelegate.swift */,
+				DAC001342157CB7E001450C6 /* ViewController.swift */,
+				DAC00148215919BB001450C6 /* UIWebViewVC.swift */,
+				DAC0014A215919D7001450C6 /* WKWebView1VC.swift */,
+				DAC0014C21591A08001450C6 /* WKWebView2VC.swift */,
+				DAC00144215911C9001450C6 /* HttpProxyHandler.swift */,
+				DAC00145215911C9001450C6 /* HttpProxyProtocol.swift */,
+				DAC001362157CB7E001450C6 /* Main.storyboard */,
+				DAC001392157CB7F001450C6 /* Assets.xcassets */,
+				DAC0013B2157CB7F001450C6 /* LaunchScreen.storyboard */,
+				DAC0013E2157CB7F001450C6 /* Info.plist */,
+			);
+			path = HttpProxyDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DAC0012E2157CB7E001450C6 /* HttpProxyDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DAC001412157CB7F001450C6 /* Build configuration list for PBXNativeTarget "HttpProxyDemo" */;
+			buildPhases = (
+				DAC0012B2157CB7E001450C6 /* Sources */,
+				DAC0012C2157CB7E001450C6 /* Frameworks */,
+				DAC0012D2157CB7E001450C6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HttpProxyDemo;
+			productName = HttpProxyDemo;
+			productReference = DAC0012F2157CB7E001450C6 /* HttpProxyDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DAC001272157CB7E001450C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = Nemo;
+				TargetAttributes = {
+					DAC0012E2157CB7E001450C6 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+				};
+			};
+			buildConfigurationList = DAC0012A2157CB7E001450C6 /* Build configuration list for PBXProject "HttpProxyDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DAC001262157CB7E001450C6;
+			productRefGroup = DAC001302157CB7E001450C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DAC0012E2157CB7E001450C6 /* HttpProxyDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DAC0012D2157CB7E001450C6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC0013D2157CB7F001450C6 /* LaunchScreen.storyboard in Resources */,
+				DAC0013A2157CB7F001450C6 /* Assets.xcassets in Resources */,
+				DAC001382157CB7E001450C6 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DAC0012B2157CB7E001450C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC00146215911C9001450C6 /* HttpProxyHandler.swift in Sources */,
+				DAC001352157CB7E001450C6 /* ViewController.swift in Sources */,
+				DAC0014B215919D7001450C6 /* WKWebView1VC.swift in Sources */,
+				DAC00147215911C9001450C6 /* HttpProxyProtocol.swift in Sources */,
+				DAC0014D21591A08001450C6 /* WKWebView2VC.swift in Sources */,
+				DAC00149215919BB001450C6 /* UIWebViewVC.swift in Sources */,
+				DAC001332157CB7E001450C6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		DAC001362157CB7E001450C6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAC001372157CB7E001450C6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		DAC0013B2157CB7F001450C6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DAC0013C2157CB7F001450C6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DAC0013F2157CB7F001450C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		DAC001402157CB7F001450C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		DAC001422157CB7F001450C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HttpProxyDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nemocdz.HttpProxyDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		DAC001432157CB7F001450C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = HttpProxyDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.nemocdz.HttpProxyDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DAC0012A2157CB7E001450C6 /* Build configuration list for PBXProject "HttpProxyDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAC0013F2157CB7F001450C6 /* Debug */,
+				DAC001402157CB7F001450C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DAC001412157CB7F001450C6 /* Build configuration list for PBXNativeTarget "HttpProxyDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DAC001422157CB7F001450C6 /* Debug */,
+				DAC001432157CB7F001450C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DAC001272157CB7E001450C6 /* Project object */;
+}
