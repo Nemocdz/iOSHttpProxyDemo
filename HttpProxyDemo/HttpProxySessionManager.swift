@@ -8,31 +8,27 @@
 
 import UIKit
 
-class ProxySessionManager: NSObject {
+class HttpProxySessionManager: NSObject {
     var host = ""
     var port = 0
     
-    static let shared = ProxySessionManager()
-    private override init() {
-        
-    }
+    static let shared = HttpProxySessionManager()
+    private override init() {}
     
     private var currentSession: URLSession?
-    private var delegate: SessionDelegate?
+    private var sessionDelegate: HttpProxySessionDelegate?
     
     func dataTask(with request: URLRequest, delegate: URLSessionDelegate) -> URLSessionDataTask {
         if let currentSession = currentSession, currentSession.isProxyConfig(host, port){
             
         } else {
-            let config = type(of: self).proxyConfig(host, port)
-            self.delegate = SessionDelegate()
-            currentSession = URLSession(configuration: config, delegate: self.delegate, delegateQueue: nil)
+            let config = URLSessionConfiguration.proxyConfig(host, port)
+            sessionDelegate = HttpProxySessionDelegate()
+            currentSession = URLSession(configuration: config, delegate: self.sessionDelegate, delegateQueue: nil)
         }
         
         let dataTask = currentSession!.dataTask(with: request)
-        let proxyDataTask = ProxyDataTask(dataTask, delegate)
-        self.delegate?[dataTask] = proxyDataTask
-
+        sessionDelegate?[dataTask] = delegate
         return dataTask
     }
     
@@ -41,15 +37,16 @@ class ProxySessionManager: NSObject {
         if let currentSession = currentSession, currentSession.isProxyConfig(host, port){
             
         } else {
-            let config = type(of: self).proxyConfig(host, port)
+            let config = URLSessionConfiguration.proxyConfig(host, port)
             currentSession = URLSession(configuration: config)
         }
         
         let dataTask = currentSession!.dataTask(with: request, completionHandler: completionHandler)
         return dataTask
     }
-    
-    
+}
+
+extension URLSessionConfiguration{
     class func proxyConfig(_ host: String, _ port: Int) -> URLSessionConfiguration{
         let config = URLSessionConfiguration.ephemeral
         if !host.isEmpty, port != 0{
@@ -61,7 +58,6 @@ class ProxySessionManager: NSObject {
         }
         return config
     }
-    
 }
 
 extension URLSession{
@@ -88,40 +84,32 @@ extension URLSession{
 }
 
 
-class ProxyDataTask: NSObject {
-    private(set) var delegate: URLSessionDelegate?
-    private(set) var dataTask: URLSessionDataTask?
-    
-    init(_ dataTask: URLSessionDataTask,_ delegate: URLSessionDelegate) {
-        self.dataTask = dataTask
-        self.delegate = delegate
-    }
-}
-
-class SessionDelegate: NSObject {
-    
+fileprivate class HttpProxySessionDelegate: NSObject {
     private let lock = NSLock()
-    
-    var taskDic = [Int: ProxyDataTask]()
-    
-    /// Access the task delegate for the specified task in a thread-safe manner.
-    open subscript(task: URLSessionTask) -> ProxyDataTask? {
+    private var taskDelegates = [Int: URLSessionDelegate]()
+    subscript(task: URLSessionTask) -> URLSessionDelegate? {
         get {
-            lock.lock() ; defer { lock.unlock() }
-            return taskDic[task.taskIdentifier]
+            lock.lock()
+            defer {
+                lock.unlock()
+            }
+            return taskDelegates[task.taskIdentifier]
         }
         set {
-            lock.lock() ; defer { lock.unlock() }
-            taskDic[task.taskIdentifier] = newValue
+            lock.lock()
+            defer {
+                lock.unlock()
+            }
+            taskDelegates[task.taskIdentifier] = newValue
         }
     }
 }
 
-extension SessionDelegate: URLSessionDataDelegate{
+extension HttpProxySessionDelegate: URLSessionDataDelegate{
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask,
                     didReceive response: URLResponse,
                     completionHandler: @escaping (URLSession.ResponseDisposition) -> Void) {
-        if let delegate = self[dataTask]?.delegate as? URLSessionDataDelegate{
+        if let delegate = self[dataTask] as? URLSessionDataDelegate{
             delegate.urlSession!(session, dataTask: dataTask, didReceive: response, completionHandler: completionHandler)
         } else {
             completionHandler(.cancel)
@@ -129,17 +117,18 @@ extension SessionDelegate: URLSessionDataDelegate{
     }
     
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        if let delegate = self[dataTask]?.delegate as? URLSessionDataDelegate{
+        if let delegate = self[dataTask] as? URLSessionDataDelegate{
             delegate.urlSession!(session, dataTask: dataTask, didReceive: data)
         }
     }
 }
 
-extension SessionDelegate: URLSessionTaskDelegate{
+extension HttpProxySessionDelegate: URLSessionTaskDelegate{
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        if let delegate = self[task]?.delegate as? URLSessionTaskDelegate{
+        if let delegate = self[task] as? URLSessionTaskDelegate{
             delegate.urlSession!(session, task: task, didCompleteWithError: error)
         }
+        self[task] = nil
     }
 }
 

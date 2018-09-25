@@ -20,8 +20,10 @@ class WKWebView2VC: UIViewController {
         let url = URL(string: "http://ip111.cn/")
         let request = URLRequest(url: url!)
         
-        let config = HttpProxyHandler.proxyConifg(host, port)
-        let webView = WKWebView(frame: view.frame, configuration: config)
+        HttpProxyHandler.host = host
+        HttpProxyHandler.port = port
+        
+        let webView = WKWebView(frame: view.frame, configuration: WKWebViewConfiguration.proxyConifg())
         view.addSubview(webView)
         
         

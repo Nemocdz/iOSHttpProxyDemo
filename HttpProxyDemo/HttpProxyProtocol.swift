@@ -7,13 +7,30 @@
 //
 
 import UIKit
-//import CoreFoundation
+import WebKit
 
 class HttpProxyProtocol: URLProtocol{
     static var isRegistered = false
     static let customKey = "HttpProxyProtocolKey"
     static var host = ""
     static var port = 0
+    
+    static var contextControllerType : AnyObject = {
+        let vc = WKWebView().value(forKey: "browsingContextController") as AnyObject
+        return type(of: vc) as AnyObject
+    }()
+    
+    class func openWebKitSupport(){
+        let sel = Selector(("registerSchemeForCustomProtocol:"))
+        let _ = contextControllerType.perform(sel, with: "http")
+        let _ = contextControllerType.perform(sel, with: "https")
+    }
+    
+    class func closeWebKitSupport(){
+        let sel = Selector(("unregisterSchemeForCustomProtocol:"))
+        let _ = contextControllerType.perform(sel, with: "http")
+        let _ = contextControllerType.perform(sel, with: "https")
+    }
     
     class func start() {
         guard isRegistered == false else {
@@ -31,16 +48,27 @@ class HttpProxyProtocol: URLProtocol{
         isRegistered = false
     }
     
-    
     private var dataTask:URLSessionDataTask?
     
     // MARK: NSURLProtocol
     override class func canInit(with request: URLRequest) -> Bool {
-        if (URLProtocol.property(forKey:customKey, in: request) == nil) {
-            return true
-        } else {
+        guard let url = request.url else {
             return false
         }
+        
+        guard let scheme = url.scheme?.lowercased() else {
+            return false
+        }
+        
+        guard scheme == "http", scheme == "https" else {
+            return false
+        }
+        
+        if let _ = URLProtocol.property(forKey:customKey, in: request) {
+            return false
+        }
+        
+        return true
     }
     
     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
@@ -52,9 +80,9 @@ class HttpProxyProtocol: URLProtocol{
         let newRequest = request as! NSMutableURLRequest
         URLProtocol.setProperty(true, forKey: type(of: self).customKey, in: newRequest)
         
-        ProxySessionManager.shared.host = type(of: self).host
-        ProxySessionManager.shared.port = type(of: self).port
-        dataTask = ProxySessionManager.shared.dataTask(with: newRequest as URLRequest, delegate:self)
+        HttpProxySessionManager.shared.host = type(of: self).host
+        HttpProxySessionManager.shared.port = type(of: self).port
+        dataTask = HttpProxySessionManager.shared.dataTask(with: newRequest as URLRequest, delegate:self)
         dataTask?.resume()
     }
     

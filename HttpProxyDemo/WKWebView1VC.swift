@@ -14,12 +14,6 @@ class WKWebView1VC: UIViewController {
     @IBOutlet weak var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sel = Selector(("registerSchemeForCustomProtocol:"))
-        let vc = WKWebView().value(forKey: "browsingContextController") as AnyObject
-        let cls = type(of: vc) as AnyObject
-
-        let _ = cls.perform(sel, with: "http")
-        let _ = cls.perform(sel, with: "https")
         
         
         

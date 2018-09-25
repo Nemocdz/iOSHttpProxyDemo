@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA89DBE12159D1020057D858 /* ProxySessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA89DBE02159D1020057D858 /* ProxySessionManager.swift */; };
+		DA89DBE12159D1020057D858 /* HttpProxySessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA89DBE02159D1020057D858 /* HttpProxySessionManager.swift */; };
 		DAC001332157CB7E001450C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC001322157CB7E001450C6 /* AppDelegate.swift */; };
 		DAC001352157CB7E001450C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC001342157CB7E001450C6 /* ViewController.swift */; };
 		DAC001382157CB7E001450C6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC001362157CB7E001450C6 /* Main.storyboard */; };
@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DA89DBE02159D1020057D858 /* ProxySessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxySessionManager.swift; sourceTree = "<group>"; };
+		DA89DBE02159D1020057D858 /* HttpProxySessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpProxySessionManager.swift; sourceTree = "<group>"; };
 		DAC0012F2157CB7E001450C6 /* HttpProxyDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HttpProxyDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC001322157CB7E001450C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAC001342157CB7E001450C6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 				DAC0014A215919D7001450C6 /* WKWebView1VC.swift */,
 				DAC0014C21591A08001450C6 /* WKWebView2VC.swift */,
 				DAC00144215911C9001450C6 /* HttpProxyHandler.swift */,
-				DA89DBE02159D1020057D858 /* ProxySessionManager.swift */,
+				DA89DBE02159D1020057D858 /* HttpProxySessionManager.swift */,
 				DAC00145215911C9001450C6 /* HttpProxyProtocol.swift */,
 				DAC001362157CB7E001450C6 /* Main.storyboard */,
 				DAC001392157CB7F001450C6 /* Assets.xcassets */,
@@ -155,7 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAC00146215911C9001450C6 /* HttpProxyHandler.swift in Sources */,
-				DA89DBE12159D1020057D858 /* ProxySessionManager.swift in Sources */,
+				DA89DBE12159D1020057D858 /* HttpProxySessionManager.swift in Sources */,
 				DAC001352157CB7E001450C6 /* ViewController.swift in Sources */,
 				DAC0014B215919D7001450C6 /* WKWebView1VC.swift in Sources */,
 				DAC00147215911C9001450C6 /* HttpProxyProtocol.swift in Sources */,
