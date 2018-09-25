@@ -10,7 +10,8 @@ import UIKit
 import WebKit
 
 class HttpProxyHandler: NSObject {
-    static let sessionConfig = URLSessionConfiguration.ephemeral
+    static var host = ""
+    static var port = 0
     
     required override init() {
         
@@ -19,32 +20,28 @@ class HttpProxyHandler: NSObject {
     private var dataTask:URLSessionDataTask?
     
     class func proxyConifg(_ host:String, _ port:Int) -> WKWebViewConfiguration{
-        let httpProxyKey = kCFNetworkProxiesHTTPEnable as String
-        let hostKey = kCFNetworkProxiesHTTPProxy as String
-        let portKey = kCFNetworkProxiesHTTPPort as String
-        let proxyDict:[String:Any] = [httpProxyKey: true, hostKey:host, portKey: port]
-        sessionConfig.connectionProxyDictionary = proxyDict
+        self.host = host
+        self.port = port
         
         let config = WKWebViewConfiguration()
         let handler = self.init()
         config.setURLSchemeHandler(handler, forURLScheme: "dummy")
         let handlers = config.value(forKey: "_urlSchemeHandlers") as! NSMutableDictionary
-        //handlers?["http"] = self.init()
-        handlers.setObject(handler, forKey: "http" as NSString)
-        handlers.setObject(handler, forKey: "https" as NSString)
-        //handlers?["https"] = self.init()
+        handlers["http"] = self.init()
+        handlers["https"] = self.init()
         return config
     }
-    
 }
 
 extension HttpProxyHandler: WKURLSchemeHandler{
     func webView(_ webView: WKWebView, start urlSchemeTask: WKURLSchemeTask) {
-        let proxySession = URLSession(configuration: type(of: self).sessionConfig)
-        dataTask = proxySession.dataTask(with: urlSchemeTask.request) {[weak urlSchemeTask] (data, response, error) in
-            guard let urlSchemeTask = urlSchemeTask else{
+        ProxySessionManager.shared.host = type(of: self).host
+        ProxySessionManager.shared.port = type(of: self).port
+        dataTask = ProxySessionManager.shared.dataTask(with: urlSchemeTask.request, completionHandler: {[weak urlSchemeTask] (data, response, error) in
+            guard let urlSchemeTask = urlSchemeTask else {
                 return
             }
+            
             if let error = error {
                 urlSchemeTask.didFailWithError(error)
             } else {
@@ -57,7 +54,7 @@ extension HttpProxyHandler: WKURLSchemeHandler{
                 }
                 urlSchemeTask.didFinish()
             }
-        }
+        })
         dataTask?.resume()
     }
     

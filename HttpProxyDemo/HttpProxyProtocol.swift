@@ -12,15 +12,8 @@ import UIKit
 class HttpProxyProtocol: URLProtocol{
     static var isRegistered = false
     static let customKey = "HttpProxyProtocolKey"
-    static let sessionConfig = URLSessionConfiguration.ephemeral
-    
-    class func setProxy(_ host:String, _ port:Int){
-        let httpProxyKey = kCFNetworkProxiesHTTPEnable as String
-        let hostKey = kCFNetworkProxiesHTTPProxy as String
-        let portKey = kCFNetworkProxiesHTTPPort as String
-        let proxyDict:[String:Any] = [httpProxyKey: true,hostKey: host, portKey: port]
-        sessionConfig.connectionProxyDictionary = proxyDict
-    }
+    static var host = ""
+    static var port = 0
     
     class func start() {
         guard isRegistered == false else {
@@ -58,8 +51,10 @@ class HttpProxyProtocol: URLProtocol{
     override func startLoading() {
         let newRequest = request as! NSMutableURLRequest
         URLProtocol.setProperty(true, forKey: type(of: self).customKey, in: newRequest)
-        let proxySession = URLSession(configuration: type(of: self).sessionConfig, delegate: self, delegateQueue: nil)
-        dataTask = proxySession.dataTask(with: newRequest as URLRequest)
+        
+        ProxySessionManager.shared.host = type(of: self).host
+        ProxySessionManager.shared.port = type(of: self).port
+        dataTask = ProxySessionManager.shared.dataTask(with: newRequest as URLRequest, delegate:self)
         dataTask?.resume()
     }
     

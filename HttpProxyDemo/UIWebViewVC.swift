@@ -18,7 +18,8 @@ class UIWebViewVC: UIViewController {
         let url = URL(string: "http://ip111.cn/")
         let request = URLRequest(url: url!)
         
-        HttpProxyProtocol.setProxy(host, port)
+        HttpProxyProtocol.host = host
+        HttpProxyProtocol.port = port
         HttpProxyProtocol.start()
         
         if (HttpProxyProtocol.canInit(with: request)){

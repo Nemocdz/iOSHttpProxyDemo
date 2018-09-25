@@ -17,9 +17,10 @@ class WKWebView1VC: UIViewController {
         let sel = Selector(("registerSchemeForCustomProtocol:"))
         let vc = WKWebView().value(forKey: "browsingContextController") as AnyObject
         let cls = type(of: vc) as AnyObject
-        
+
         let _ = cls.perform(sel, with: "http")
         let _ = cls.perform(sel, with: "https")
+        
         
         
         let host = ViewController.host
@@ -28,7 +29,8 @@ class WKWebView1VC: UIViewController {
         let url = URL(string: "http://ip111.cn/")
         let request = URLRequest(url: url!)
         
-        HttpProxyProtocol.setProxy(host, port)
+        HttpProxyProtocol.host = host
+        HttpProxyProtocol.port = port
         HttpProxyProtocol.start()
         if (HttpProxyProtocol.canInit(with: request)){
             webView.load(request)
