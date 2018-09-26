@@ -46,14 +46,23 @@ class HttpProxySessionManager: NSObject {
     }
 }
 
+fileprivate let httpProxyKey = kCFNetworkProxiesHTTPEnable as String
+fileprivate let httpHostKey = kCFNetworkProxiesHTTPProxy as String
+fileprivate let httpPortKey = kCFNetworkProxiesHTTPPort as String
+fileprivate let httpsProxyKey = "HTTPSEnable"
+fileprivate let httpsHostKey = "HTTPSProxy"
+fileprivate let httpsPortKey = "HTTPSPort"
+
 extension URLSessionConfiguration{
     class func proxyConfig(_ host: String, _ port: Int) -> URLSessionConfiguration{
         let config = URLSessionConfiguration.ephemeral
         if !host.isEmpty, port != 0{
-            let httpProxyKey = kCFNetworkProxiesHTTPEnable as String
-            let hostKey = kCFNetworkProxiesHTTPProxy as String
-            let portKey = kCFNetworkProxiesHTTPPort as String
-            let proxyDict:[String:Any] = [httpProxyKey: true,hostKey: host, portKey: port]
+            let proxyDict:[String:Any] = [httpProxyKey: true,
+                                          httpHostKey: host,
+                                          httpPortKey: port,
+                                          httpsProxyKey: true,
+                                          httpsHostKey: host,
+                                          httpsPortKey: port]
             config.connectionProxyDictionary = proxyDict
         }
         return config
@@ -65,9 +74,7 @@ extension URLSession{
         guard let proxyDic = self.configuration.connectionProxyDictionary else {
             return false
         }
-        let hostKey = kCFNetworkProxiesHTTPProxy as String
-        let portKey = kCFNetworkProxiesHTTPPort as String
-        guard let host = proxyDic[hostKey] as? String, let port = proxyDic[portKey] as? Int else{
+        guard let host = proxyDic[httpHostKey] as? String, let port = proxyDic[httpPortKey] as? Int else{
             if aHost.isEmpty, aPort == 0{
                 return true
             } else{

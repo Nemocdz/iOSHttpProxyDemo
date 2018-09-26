@@ -101,7 +101,7 @@ extension HttpProxyProtocol: URLSessionDataDelegate{
     }
     
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
-        client?.urlProtocol(self, didLoad: data as Data)
+        client?.urlProtocol(self, didLoad: data)
     }
 }
 
