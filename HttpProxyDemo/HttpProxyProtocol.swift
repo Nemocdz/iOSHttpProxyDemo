@@ -60,7 +60,7 @@ class HttpProxyProtocol: URLProtocol{
             return false
         }
         
-        guard scheme == "http", scheme == "https" else {
+        guard scheme == "http" || scheme == "https" else {
             return false
         }
         
