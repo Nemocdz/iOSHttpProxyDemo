@@ -10,8 +10,8 @@ import UIKit
 import WebKit
 
 class HttpProxyHandler: NSObject {
-    static var host = ""
-    static var port = 0
+    static var host: String?
+    static var port: Int?
     private var dataTask:URLSessionDataTask?
 }
 
