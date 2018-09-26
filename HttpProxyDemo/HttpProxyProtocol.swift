@@ -12,8 +12,8 @@ import WebKit
 class HttpProxyProtocol: URLProtocol{
     static var isRegistered = false
     static let customKey = "HttpProxyProtocolKey"
-    static var host = ""
-    static var port = 0
+    static var host: String?
+    static var port: Int?
     
     static var contextControllerType : AnyObject = {
         let vc = WKWebView().value(forKey: "browsingContextController") as AnyObject

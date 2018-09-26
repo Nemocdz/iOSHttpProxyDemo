@@ -9,8 +9,8 @@
 import UIKit
 
 class HttpProxySessionManager: NSObject {
-    var host = ""
-    var port = 0
+    var host: String?
+    var port: Int?
     
     static let shared = HttpProxySessionManager()
     private override init() {}
@@ -54,9 +54,9 @@ fileprivate let httpsHostKey = "HTTPSProxy"
 fileprivate let httpsPortKey = "HTTPSPort"
 
 extension URLSessionConfiguration{
-    class func proxyConfig(_ host: String, _ port: Int) -> URLSessionConfiguration{
+    class func proxyConfig(_ host: String?, _ port: Int?) -> URLSessionConfiguration{
         let config = URLSessionConfiguration.ephemeral
-        if !host.isEmpty, port != 0{
+        if let host = host, let port = port {
             let proxyDict:[String:Any] = [httpProxyKey: true,
                                           httpHostKey: host,
                                           httpPortKey: port,
@@ -70,23 +70,25 @@ extension URLSessionConfiguration{
 }
 
 extension URLSession{
-    func isProxyConfig(_ aHost: String, _ aPort: Int) -> Bool{
-        guard let proxyDic = self.configuration.connectionProxyDictionary else {
-            return false
-        }
-        guard let host = proxyDic[httpHostKey] as? String, let port = proxyDic[httpPortKey] as? Int else{
-            if aHost.isEmpty, aPort == 0{
+    func isProxyConfig(_ aHost: String?, _ aPort: Int?) -> Bool{
+        if self.configuration.connectionProxyDictionary == nil && aHost == nil && aPort == nil {
+            return true
+        } else {
+            guard let proxyDic = self.configuration.connectionProxyDictionary,
+                let aHost = aHost,
+                let aPort = aPort,
+                let host = proxyDic[httpHostKey] as? String,
+                let port = proxyDic[httpPortKey] as? Int else {
+                    return false
+            }
+            
+            if aHost == host, aPort == port{
                 return true
-            } else{
+            } else {
                 return false
             }
+            
         }
-        
-        guard host == aHost, port == aPort else {
-            return false
-        }
-        
-        return true
     }
 }
 
