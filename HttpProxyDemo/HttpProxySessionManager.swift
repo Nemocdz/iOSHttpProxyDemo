@@ -22,8 +22,9 @@ class HttpProxySessionManager: NSObject {
         if let currentSession = currentSession, currentSession.isProxyConfig(host, port){
             
         } else {
-            let config = URLSessionConfiguration.proxyConfig(host, port)
+            currentSession?.invalidateAndCancel()
             sessionDelegate = HttpProxySessionDelegate()
+            let config = URLSessionConfiguration.proxyConfig(host, port)
             currentSession = URLSession(configuration: config, delegate: self.sessionDelegate, delegateQueue: nil)
         }
         
@@ -37,6 +38,7 @@ class HttpProxySessionManager: NSObject {
         if let currentSession = currentSession, currentSession.isProxyConfig(host, port){
             
         } else {
+            currentSession?.invalidateAndCancel()
             let config = URLSessionConfiguration.proxyConfig(host, port)
             currentSession = URLSession(configuration: config)
         }
