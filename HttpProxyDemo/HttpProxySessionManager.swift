@@ -57,7 +57,7 @@ fileprivate let httpsPortKey = "HTTPSPort"
 
 extension URLSessionConfiguration{
     class func proxyConfig(_ host: String?, _ port: Int?) -> URLSessionConfiguration{
-        let config = URLSessionConfiguration.ephemeral
+        let config = URLSessionConfiguration.default
         if let host = host, let port = port {
             let proxyDict:[String:Any] = [httpProxyKey: true,
                                           httpHostKey: host,
@@ -66,6 +66,7 @@ extension URLSessionConfiguration{
                                           httpsHostKey: host,
                                           httpsPortKey: port]
             config.connectionProxyDictionary = proxyDict
+            config.protocolClasses = [HttpProxyProtocol.self]
         }
         return config
     }

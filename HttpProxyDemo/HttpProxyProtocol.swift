@@ -52,15 +52,7 @@ class HttpProxyProtocol: URLProtocol{
     
     // MARK: NSURLProtocol
     override class func canInit(with request: URLRequest) -> Bool {
-        guard let url = request.url else {
-            return false
-        }
-        
-        guard let scheme = url.scheme?.lowercased() else {
-            return false
-        }
-        
-        guard scheme == "http" || scheme == "https" else {
+        guard let url = request.url, let scheme = url.scheme?.lowercased(), scheme == "http" || scheme == "https" else {
             return false
         }
         
