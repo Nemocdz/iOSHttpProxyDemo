@@ -3,7 +3,7 @@
 //  Test
 //
 //  Created by Nemo on 2018/9/20.
-//  Copyright © 2018年 tencent. All rights reserved.
+//  Copyright © 2018年 Nemo. All rights reserved.
 //
 
 import UIKit
@@ -64,7 +64,7 @@ class HttpProxyProtocol: URLProtocol{
             return false
         }
         
-        if let _ = URLProtocol.property(forKey:customKey, in: request) {
+        if let _ = self.property(forKey:customKey, in: request) {
             return false
         }
         
@@ -72,13 +72,13 @@ class HttpProxyProtocol: URLProtocol{
     }
     
     override class func canonicalRequest(for request: URLRequest) -> URLRequest {
-        return request
+        return (request as NSURLRequest).cdz_canonical()
     }
     
     
     override func startLoading() {
         let newRequest = request as! NSMutableURLRequest
-        URLProtocol.setProperty(true, forKey: type(of: self).customKey, in: newRequest)
+        type(of: self).setProperty(true, forKey: type(of: self).customKey, in: newRequest)
         
         HttpProxySessionManager.shared.host = type(of: self).host
         HttpProxySessionManager.shared.port = type(of: self).port
@@ -106,6 +106,15 @@ extension HttpProxyProtocol: URLSessionDataDelegate{
 }
 
 extension HttpProxyProtocol: URLSessionTaskDelegate{
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
+        let newRequest = request as! NSMutableURLRequest
+        type(of: self).removeProperty(forKey: type(of: self).customKey, in: newRequest)
+        client?.urlProtocol(self, wasRedirectedTo: newRequest as URLRequest, redirectResponse: response)
+        dataTask?.cancel()
+        let error = NSError(domain: NSCocoaErrorDomain, code: NSUserCancelledError, userInfo: nil)
+        client?.urlProtocol(self, didFailWithError: error)
+    }
+    
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if error != nil && error!._code != NSURLErrorCancelled {
             client?.urlProtocol(self, didFailWithError: error!)

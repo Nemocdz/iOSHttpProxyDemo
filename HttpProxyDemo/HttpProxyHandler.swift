@@ -3,7 +3,7 @@
 //  Test
 //
 //  Created by Nemo on 2018/9/21.
-//  Copyright © 2018年 tencent. All rights reserved.
+//  Copyright © 2018年 Nemo. All rights reserved.
 //
 
 import UIKit

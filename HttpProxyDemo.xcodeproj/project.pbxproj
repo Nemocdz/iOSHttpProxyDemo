@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA39BA582174A18D008D6D20 /* NSURLRequest+ProxyCanonicalRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = DA39BA562174A18C008D6D20 /* NSURLRequest+ProxyCanonicalRequest.m */; };
 		DA89DBE12159D1020057D858 /* HttpProxySessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA89DBE02159D1020057D858 /* HttpProxySessionManager.swift */; };
 		DAC001332157CB7E001450C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC001322157CB7E001450C6 /* AppDelegate.swift */; };
 		DAC001352157CB7E001450C6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC001342157CB7E001450C6 /* ViewController.swift */; };
@@ -21,6 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA39BA552174A18C008D6D20 /* HttpProxyDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HttpProxyDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		DA39BA562174A18C008D6D20 /* NSURLRequest+ProxyCanonicalRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLRequest+ProxyCanonicalRequest.m"; sourceTree = "<group>"; };
+		DA39BA572174A18D008D6D20 /* NSURLRequest+ProxyCanonicalRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLRequest+ProxyCanonicalRequest.h"; sourceTree = "<group>"; };
 		DA89DBE02159D1020057D858 /* HttpProxySessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpProxySessionManager.swift; sourceTree = "<group>"; };
 		DAC0012F2157CB7E001450C6 /* HttpProxyDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HttpProxyDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC001322157CB7E001450C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		DAC001312157CB7E001450C6 /* HttpProxyDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DA39BA572174A18D008D6D20 /* NSURLRequest+ProxyCanonicalRequest.h */,
+				DA39BA562174A18C008D6D20 /* NSURLRequest+ProxyCanonicalRequest.m */,
 				DAC001322157CB7E001450C6 /* AppDelegate.swift */,
 				DAC001342157CB7E001450C6 /* ViewController.swift */,
 				DAC00148215919BB001450C6 /* UIWebViewVC.swift */,
@@ -78,6 +84,7 @@
 				DAC001392157CB7F001450C6 /* Assets.xcassets */,
 				DAC0013B2157CB7F001450C6 /* LaunchScreen.storyboard */,
 				DAC0013E2157CB7F001450C6 /* Info.plist */,
+				DA39BA552174A18C008D6D20 /* HttpProxyDemo-Bridging-Header.h */,
 			);
 			path = HttpProxyDemo;
 			sourceTree = "<group>";
@@ -160,6 +167,7 @@
 				DAC0014B215919D7001450C6 /* WKWebView1VC.swift in Sources */,
 				DAC00147215911C9001450C6 /* HttpProxyProtocol.swift in Sources */,
 				DAC0014D21591A08001450C6 /* WKWebView2VC.swift in Sources */,
+				DA39BA582174A18D008D6D20 /* NSURLRequest+ProxyCanonicalRequest.m in Sources */,
 				DAC00149215919BB001450C6 /* UIWebViewVC.swift in Sources */,
 				DAC001332157CB7E001450C6 /* AppDelegate.swift in Sources */,
 			);
@@ -320,7 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nemocdz.HttpProxyDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HttpProxyDemo/HttpProxyDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -344,7 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nemocdz.HttpProxyDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "HttpProxyDemo/HttpProxyDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -135,6 +135,12 @@ extension HttpProxySessionDelegate: URLSessionDataDelegate{
 }
 
 extension HttpProxySessionDelegate: URLSessionTaskDelegate{
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: @escaping (URLRequest?) -> Void) {
+        if let delegate = self[task] as? URLSessionTaskDelegate{
+            delegate.urlSession?(session, task: task, willPerformHTTPRedirection: response, newRequest: request, completionHandler: completionHandler)
+        }
+    }
+    
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
         if let delegate = self[task] as? URLSessionTaskDelegate{
             delegate.urlSession!(session, task: task, didCompleteWithError: error)
