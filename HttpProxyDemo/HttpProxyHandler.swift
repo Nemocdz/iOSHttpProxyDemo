@@ -46,13 +46,14 @@ extension HttpProxyHandler: WKURLSchemeHandler{
 }
 
 extension WKWebViewConfiguration{
-    class func proxyConifg() -> WKWebViewConfiguration{
+    static var proxyConifg:WKWebViewConfiguration{
         let config = WKWebViewConfiguration()
         let handler = HttpProxyHandler()
         config.setURLSchemeHandler(handler, forURLScheme: "dummy")
-        let handlers = config.value(forKey: "_urlSchemeHandlers") as! NSMutableDictionary
-        handlers["http"] = handler
-        handlers["https"] = handler
+        // 该方法在 iOS 12.2 上已经失效，KVC 会取不到值崩溃
+        //let handlers = config.value(forKey: "_urlSchemeHandlers") as! NSMutableDictionary
+        //handlers["http"] = handler
+        //handlers["https"] = handler
         return config
     }
 }
