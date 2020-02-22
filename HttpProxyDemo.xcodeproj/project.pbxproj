@@ -19,6 +19,7 @@
 		DAC00149215919BB001450C6 /* UIWebViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC00148215919BB001450C6 /* UIWebViewVC.swift */; };
 		DAC0014B215919D7001450C6 /* WKWebView1VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC0014A215919D7001450C6 /* WKWebView1VC.swift */; };
 		DAC0014D21591A08001450C6 /* WKWebView2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC0014C21591A08001450C6 /* WKWebView2VC.swift */; };
+		DACBE63E24012BF0001DA241 /* WKWebView+Hook.m in Sources */ = {isa = PBXBuildFile; fileRef = DACBE63D24012BF0001DA241 /* WKWebView+Hook.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		DAC00148215919BB001450C6 /* UIWebViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWebViewVC.swift; sourceTree = "<group>"; };
 		DAC0014A215919D7001450C6 /* WKWebView1VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView1VC.swift; sourceTree = "<group>"; };
 		DAC0014C21591A08001450C6 /* WKWebView2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebView2VC.swift; sourceTree = "<group>"; };
+		DACBE63C24012BF0001DA241 /* WKWebView+Hook.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WKWebView+Hook.h"; sourceTree = "<group>"; };
+		DACBE63D24012BF0001DA241 /* WKWebView+Hook.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "WKWebView+Hook.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +80,8 @@
 				DAC00148215919BB001450C6 /* UIWebViewVC.swift */,
 				DAC0014A215919D7001450C6 /* WKWebView1VC.swift */,
 				DAC0014C21591A08001450C6 /* WKWebView2VC.swift */,
+				DACBE63C24012BF0001DA241 /* WKWebView+Hook.h */,
+				DACBE63D24012BF0001DA241 /* WKWebView+Hook.m */,
 				DAC00144215911C9001450C6 /* HttpProxyHandler.swift */,
 				DA89DBE02159D1020057D858 /* HttpProxySessionManager.swift */,
 				DAC00145215911C9001450C6 /* HttpProxyProtocol.swift */,
@@ -169,6 +174,7 @@
 				DAC0014D21591A08001450C6 /* WKWebView2VC.swift in Sources */,
 				DA39BA582174A18D008D6D20 /* NSURLRequest+ProxyCanonicalRequest.m in Sources */,
 				DAC00149215919BB001450C6 /* UIWebViewVC.swift in Sources */,
+				DACBE63E24012BF0001DA241 /* WKWebView+Hook.m in Sources */,
 				DAC001332157CB7E001450C6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
