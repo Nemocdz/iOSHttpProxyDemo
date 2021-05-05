@@ -26,6 +26,7 @@ class WKWebView1VC: UIViewController {
         HttpProxyProtocol.host = host
         HttpProxyProtocol.port = port
         HttpProxyProtocol.start()
+        HttpProxyProtocol.openWebKitSupport()
         if (HttpProxyProtocol.canInit(with: request)){
             webView.load(request)
         }
@@ -35,6 +36,7 @@ class WKWebView1VC: UIViewController {
     
     override func viewDidDisappear(_ animated: Bool) {
         HttpProxyProtocol.stop()
+        HttpProxyProtocol.closeWebKitSupport()
     }
     
     

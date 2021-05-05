@@ -19,14 +19,13 @@ class HttpProxySessionManager: NSObject {
     private var sessionDelegate: HttpProxySessionDelegate?
     
     func dataTask(with request: URLRequest, delegate: URLSessionDelegate) -> URLSessionDataTask {
-        if let currentSession = currentSession, currentSession.isProxyConfig(host, port){
-            
-        } else {
+  
             currentSession?.invalidateAndCancel()
             sessionDelegate = HttpProxySessionDelegate()
             let config = URLSessionConfiguration.proxyConfig(host, port)
+            config.protocolClasses = [HttpProxyProtocol.self]
             currentSession = URLSession(configuration: config, delegate: self.sessionDelegate, delegateQueue: nil)
-        }
+        
         
         let dataTask = currentSession!.dataTask(with: request)
         sessionDelegate?[dataTask] = delegate
@@ -35,13 +34,11 @@ class HttpProxySessionManager: NSObject {
     
     
     func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask{
-        if let currentSession = currentSession, currentSession.isProxyConfig(host, port){
-            
-        } else {
+
             currentSession?.invalidateAndCancel()
             let config = URLSessionConfiguration.proxyConfig(host, port)
             currentSession = URLSession(configuration: config)
-        }
+    
         
         let dataTask = currentSession!.dataTask(with: request, completionHandler: completionHandler)
         return dataTask
@@ -66,7 +63,6 @@ extension URLSessionConfiguration{
                                           httpsHostKey: host,
                                           httpsPortKey: port]
             config.connectionProxyDictionary = proxyDict
-            config.protocolClasses = [HttpProxyProtocol.self]
         }
         return config
     }
