@@ -412,8 +412,6 @@ extern NSMutableURLRequest * CanonicalRequestForRequest(NSURLRequest *request)
     return result;
 }
 
-
-
 - (NSURLRequest *)cdz_canonicalRequest{
     return CanonicalRequestForRequest(self);
 }
